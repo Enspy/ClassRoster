@@ -51,32 +51,13 @@ void Roster::Remove(std::string studentID) {
     }
 }
 
-// Print all function
-// Added custom widths to columns for better organization
-void Roster::printAll() const {
-    cout << left << setw(12) << "Student ID";
-    cout << left << setw(12) << "First Name";
-    cout << left << setw(12) << "Last Name";
-    cout << left << setw(6) << "Age";
-    cout << left << setw(22) << "Days in Course";
-    cout << left << setw(6) << "Degree Program" << endl;
 
+// new print all function
+void Roster::printAll() const {
+
+    std::cout << std::endl;
     for (int i = 0; i <= lastIndex; i++) {
-        cout << left << setw(12) << classRosterArray[i]->GetStudentID();
-        cout << left << setw(12) << classRosterArray[i]->GetFirstName();
-        cout << left << setw(12) << classRosterArray[i]->GetLastName();
-        cout << left << setw(6) << classRosterArray[i]->GetAge();
-        const int* days = classRosterArray[i]->GetDaysToComplete();
-        cout << "{" << days[0] << ", " << days[1] << ", " << days[2] << "}" << right << setw(18);
-        DegreeProgram degreeProgram = classRosterArray[i]->getDegreeProgram();
-        if (degreeProgram == DegreeProgram::SECURITY) {
-            cout << "SECURITY";
-        } else if (degreeProgram == DegreeProgram::NETWORK) {
-            cout << "NETWORK";
-        } else if (degreeProgram == DegreeProgram::SOFTWARE) {
-            cout << "SOFTWARE";
-        }
-        cout << endl;
+        classRosterArray[i]->Print(); // Calls the print() function from the student class for each student in classRosterArray
     }
 }
 
